@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.9.0",
     "react-dom": "^16.8.3",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1",
     "twin.macro": "^1.7.0"
@@ -21,7 +22,7 @@
       "debugPlugins": false,
       "debug": false
     }
-},
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

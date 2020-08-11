@@ -3,6 +3,10 @@ import logo from './logo.svg';
 import styled from "styled-components"
 import tw from "twin.macro"
 
+
+const Div = styled.div`
+${tw`min-h-1 border border-red-700`}
+`
 const StyledForm = styled.main.attrs({
   className: "flex flex-col h-screen justify-center items-center bg-gray-100",
 })`
@@ -20,6 +24,7 @@ const StyledForm = styled.main.attrs({
 `
 function App() {
   return (
+    <>
     <StyledForm>
       <form>
         <input type="text" placeholder="Full name" />
@@ -28,6 +33,8 @@ function App() {
         <button>Sign In</button>
       </form>
     </StyledForm>
+    <Div />
+    </>
   )
 }
 
