@@ -15,9 +15,9 @@ export function Provider(props) {
     ]);
    
   };
-  //console.log(tasks);
+  
   const handleRemoveTask = id => {
-    console.log(id , " is removed")
+  
     setTasks(tasks.filter(p => p.id !== id));
   };
   const toggleIsDone = (id, checked) => {

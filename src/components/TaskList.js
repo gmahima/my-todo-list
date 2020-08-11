@@ -22,11 +22,11 @@ export default function TaskList({show}) {
 
   const taskList = myTasks.map((task) => (
 
-    <li><Task id={task.id} key={task.id.toString()} /></li>
+    <li key={task.id}><Task id={task.id} key={task.id.toString()} /></li>
   ));
   return (
 
-        <TaskUl> 
+        <TaskUl length={taskList.length}> 
           {
             taskList
           }
@@ -45,6 +45,13 @@ grid-auto-rows: auto
 grid-gap: 1px;
 margin: 0;
 ${tw`shadow-lg rounded border  md:px-10 px-0 py-1 min-h-1 md:min-h-5`}
+${
+    props => {
+        if(props.length === 0) {
+            return tw `hidden`
+        }
+    }
+}
 
 
 `

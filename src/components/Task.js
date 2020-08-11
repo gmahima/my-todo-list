@@ -55,9 +55,7 @@ export default function Task({ id }) {
   const context = useContext(TaskContext);
 
   const handleChange = (e) =>{
-    console.log(e.target.value + " " + e.target.checked)
     context.actions.toggleIsDone(e.target.value, e.target.checked)
-    console.log(context.tasks)
   }
     let task = null;
 
@@ -68,7 +66,6 @@ export default function Task({ id }) {
           task = context.tasks[i];
         }
     }
-    console.log(task);
     // useEffect(()=>{
     //   if (isInitialMount.current) {
     //     isInitialMount.current = false;
@@ -92,8 +89,7 @@ export default function Task({ id }) {
           &times;
         </CloseButton>
         <TaskName checked={task.checked}>{task.name}</TaskName>
-        {console.log(task.name)}
-
+       
         <CheckLabel checked={task.checked}>
           <CheckInput type="checkbox"
             value={task.id}
