@@ -1,41 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import styled from "styled-components"
-import tw from "twin.macro"
+import React from "react";
+import styled from "styled-components";
+import tw from 'twin.macro'
+import AddTaskForm from "./components/AddTaskForm";
+import TaskList from "./components/TaskList";
+import NavList from "./components/NavList";
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
-
-const Div = styled.div`
-${tw`min-h-1 border border-red-700`}
-`
-const StyledForm = styled.main.attrs({
-  className: "flex flex-col h-screen justify-center items-center bg-gray-100",
-})`
-  & {
-    form {
-      ${tw`bg-testing text-center rounded py-8 px-5 shadow max-w-xs`}
-    }
-    input {
-      ${tw`border-gray-300 mb-4 w-full border-solid border rounded py-2 px-4`}
-    }
-    button {
-      ${tw`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded`}
-    }
+const Tasks = styled.div`
+  display: grid;
+  grid-template-columns: 0.5fr;
+  justify-content: center;
+  grid-gap: 2em;
+  @media (max-width: 400px) {
+    fgrid-template-columns: 0.1fr;
   }
-`
-function App() {
-  return (
-    <>
-    <StyledForm>
-      <form>
-        <input type="text" placeholder="Full name" />
-        <input type="text" placeholder="Email" />
-        <input type="text" placeholder="Password" />
-        <button>Sign In</button>
-      </form>
-    </StyledForm>
-    <Div />
-    </>
-  )
-}
 
-export default App;
+`
+const H1 = styled.h1`
+${tw`text-black text-3xl md:text-5xl py-6`}
+`
+const Container = styled.div`
+${tw`bg-white grid w-screen h-screen text-center content-start gap-6 md:gap-12`}
+`
+ export default function ToDoList() {
+  return (
+    <Router>
+
+        <Container >
+          <H1>My To Do List</H1>
+          <NavList />
+          <Tasks>
+            <AddTaskForm />
+            <Switch>
+              <Route exact path='/' render={() => (<Redirect to='/all' />)}/>
+              <Route path='/all'  render={() => (<TaskList show='all' />)}/>
+              <Route path='/done' render={() => (<TaskList show='done' />)}/>
+              <Route path='/todo' render={() => (<TaskList show='todo' />)}/>
+            </Switch> 
+          </Tasks>
+        </Container>
+
+    </Router>
+  );
+}
