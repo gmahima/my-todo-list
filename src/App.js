@@ -1,26 +1,34 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components"
+import tw from "twin.macro"
 
+const StyledForm = styled.main.attrs({
+  className: "flex flex-col h-screen justify-center items-center bg-gray-100",
+})`
+  & {
+    form {
+      ${tw`bg-testing text-center rounded py-8 px-5 shadow max-w-xs`}
+    }
+    input {
+      ${tw`border-gray-300 mb-4 w-full border-solid border rounded py-2 px-4`}
+    }
+    button {
+      ${tw`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded`}
+    }
+  }
+`
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StyledForm>
+      <form>
+        <input type="text" placeholder="Full name" />
+        <input type="text" placeholder="Email" />
+        <input type="text" placeholder="Password" />
+        <button>Sign In</button>
+      </form>
+    </StyledForm>
+  )
 }
 
 export default App;
